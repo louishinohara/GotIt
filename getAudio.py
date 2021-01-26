@@ -8,13 +8,14 @@ from gtts import gTTS
 def speak(text):
     tts = gTTS(text=text, lang="en")
     filename = "voice.mp3"
-    # tts.save(filename)
+    tts.save(filename)
     playsound.playsound(filename)
 
 
 def get_audio_from_mic():
     r = sr.Recognizer()
-    with sr.Microphone() as source:
+    mic = sr.Microphone()
+    with mic as source:
         audio = r.listen(source)
         said = ""
 
@@ -27,15 +28,23 @@ def get_audio_from_mic():
 
     return said
 
+def findInputSource():      # Find your device's output and set that index in the sr.Microphone(device_index)
+    devices = sr.Microphone.list_microphone_names()
+
+    for i in range(len(devices)):
+        print(str(i) + ': ' + str(devices[i]))
+
 
 def main():
-    speak('Test')
+    # findInputSource()
+    speak('Play Recording Now')
     text = get_audio_from_mic()
 
-    if "testing" in text:
-        speak('Testing')
-    else:
-        speak(text)
+
+    # if "testing" in text:
+    #     speak('Testing')
+    # else:
+    #     speak(text)
 
 
 main()

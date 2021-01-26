@@ -14,6 +14,7 @@ def speak(text):        # Translates text to speach using google's library
 
 def get_audio_from_mic():   # Gets audio from mic and translates to text
     r = sr.Recognizer()
+    # mic = sr.Microphone(device_index=2)
     mic = sr.Microphone(device_index=None)
     with mic as source:
         audio = r.listen(source)
@@ -36,12 +37,11 @@ def findInputSource():      # Find your device's output and set that index in th
 
 
 def main():
-    findInputSource()
-    # speak('Play Recording Now')
+    # findInputSource()
+    speak('Play Recording Now')
     text = get_audio_from_mic()
 
 # These next few lines of code can determine whether certain phrases exist in the text and triggers a function
-
 
     # if "payment" in text: 
     #     speak('Pulling Up Venmo')

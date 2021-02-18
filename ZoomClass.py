@@ -13,10 +13,7 @@ class Zoom:
 
     def increase_seq_num(self):                                         # Increase the seq number and params for POST
         self.seq_num += 1
-        self.params = {
-        'seq' : str(self.seq_num),
-        'lang' : "en-US"
-        }
+        self.params = {'seq' : str(self.seq_num), 'lang' : "en-US" }
     
     def post_transcript(self, transcript):
         self.session.post(self.api_token, params=self.params, data=transcript, headers=self.headers)    # Post transcript

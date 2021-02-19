@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime #Suraj testing
 
 # https://github.com/heyyeh12/zoom_cc#development
 # Used this code as a sample to post to zoom
@@ -14,4 +15,4 @@ def postTranscript(api_token, transcript):
         params=post_params, data=transcript,
         headers={'Content-type': 'text/plain; charset=utf-8'}
         )
-    print('Text posted')
+    print('Text posted at: ' + datetime.now().strftime("%H:%M:%S"))

@@ -1,7 +1,7 @@
 import os
 import time
 import speech_recognition as sr
-import pyaudio 
+import pyaudio
 
 def getAudioFromMic():   # Gets audio from mic and translates to text
     r = sr.Recognizer()

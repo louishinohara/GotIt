@@ -1,3 +1,8 @@
+## SURAJ'S TEST FOR ZOOM OUTPUT
+import logging
+from codetiming import Timer
+from datetime import datetime
+
 from findInputSource import findInputSource
 from speak import speak
 from getAudio import getAudioFromMic
@@ -7,13 +12,16 @@ from postToZoom import postTranscript
 def main():
     # findInputSource()
     # speak('Play Recording Now')
-    keepGoing = True
-    api_token = 'https://wmcc.zoom.us/closedcaption?id=99211570681&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=xhouuJ1_oVm6g6zo1qZ0-1umW37xxtR-OQ8wJ83uINA.AG.Qurhu1AvwaiKL0Zb4SsIH6Y6d68Eotn6eIPJUJzeq6xmpF4G2NQX8Cl35bibNM7ESoyd2wtz86bc1y5BkpvUp7YheOFGchJTzYP3m7NAqUNQkDCmMhU30OWn.JPDT-e80tIuPkixHP55cuw.wV4vT0rfh9GRYsV8'
+    api_token = 'https://us02wmcc.zoom.us/closedcaption?id=89484164831&ns=UlUgQ2Fwc3RvbmUgTWVldGluZw&expire=86400&sparams=id%2Cns%2Cexpire&signature=h12-VMcwuacjziG3-SkXG63EPGwM4srSyTK9hCGJJZY.AG.tld7wbYR42uz1MSy7wLhMOYmL5F1tXBvHNT6mS1iTKkuxHIBK0HoZEvRkIBjIvDBqPlAoaedCmKKm5LXBy68DClS3CwPIBU.5nXjAhnUbVs4hyR4cBOzfQ.q5-Z1fUcYCppAnrQ'
+    t = Timer("example", text="Time spent: {:.2f}", logger=logging.warning)
 
-    for i in range(5):
-        text = getAudioFromMic()
-        getAnalysis(text)
-        postTranscript(api_token, text)
-    
+    for _ in range(5):
+
+        text = "example"
+        # getAnalysis(text)
+        
+        with t:
+            postTranscript(api_token, text)
+            
 
 main()

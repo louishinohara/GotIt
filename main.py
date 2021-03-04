@@ -1,5 +1,7 @@
 from ZoomClass import Zoom
 from VoiceClass import Voice
+from GCloudClass import GCloud
+
 
 def main():
     voice = Voice()
@@ -13,7 +15,22 @@ def main():
         text = "Text Text # " + str(i)
         zoom.post_transcript(text)
 
-main()
+def testGCloud():
+
+    # Audio recording parameters
+    RATE = 16000
+    CHUNK = int(RATE / 10)  # 100ms
+    language_code = "en-US"
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=93846635912&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=PHmXZI3cvRMjRM9Oktx0nxTiisVcWKUnQGOL65a6FCo.AG.VUwdPapAw5cr9oHxJtkUobK0nHbbIx8oPvvZBZYq8F-9l0_xUSfBTF9Ad-GyPFFNOvyHbZCyNWKhWlSl8UPbbqnDUJOLvgRadGt-cXEi__luwfX3CS0HHHlw.0On0MGAO1tEbKLb2yYxQMQ.X0qHZwgQS6eobq38'
+    
+    zoom = Zoom(ZOOM_API_TOKEN)
+    g = GCloud(RATE, CHUNK, language_code)
+    # g.testLocalAudio()
+
+    g.getStreamedTranscription(zoom)
+
+testGCloud()
+# main()
 
 
 # Other possible methods from Voice class

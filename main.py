@@ -1,25 +1,22 @@
-## SURAJ'S TEST FOR ZOOM OUTPUT
-import logging
-from codetiming import Timer
-from datetime import datetime
-
-from findInputSource import findInputSource
-from speak import speak
-from getAudio import getAudioFromMic
-from getAnalysis import getAnalysis
-from postToZoom import postTranscript
+from ZoomClass import Zoom
+from VoiceClass import Voice
 
 def main():
-    # findInputSource()
-    # speak('Play Recording Now')
-    api_token = 'https://wmcc.zoom.us/closedcaption?id=4284297067&ns=U3VyYWogU2FueWFsJ3MgUGVyc29uYWwgTWVldGlu&expire=86400&sparams=id%2Cns%2Cexpire&signature=zDazCC4yu2PQuN9HAvPRyeTtiMNOXUl0k6yxlT7jTNI.AG.6Ff85imlHcJ8Ky3rpB4LI7tLs9xkWl2CxN_UiL3dZg8n2VrPPXUA1meIRHSy0pp-zAM6O2VVuo4yhZx4rLLApocQjBC0h6dxvxgEx4OArcjd4mdSdGuEaw.TuDDDSot5Hb1BslVrNfW2g.TwKgnfmfg7cpbetu'
-    # t = Timer("example", text="Time spent: {:.2f}", logger=logging.warning)
+    voice = Voice()
+    
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=99632027021&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=YsUUv5r7YtmRRfzaNW_-B3P6TwQY6YFSbFct4C_ob1U.AG.HeFxpw9WeqLeDPMP_GczhAeiRT5iQJSs2V4DZVRDdI8w-eyiNmCLFtBYEKAnCPiveRsC6wycvwDVYTaVPOzBnzTySiaUudbOu4E_07_UsKk2OIa_Z3h1aFWM.294f0xnkWIFDqEqHLVzJow.MkZe635jQzX_jJrh'
+    
+    zoom = Zoom(ZOOM_API_TOKEN)
 
-    for _ in range(5):
-
-        text = getAudioFromMic()
-        # getAnalysis(text)
-        postTranscript(api_token, text)
-            
+    for i in range(10):
+        # text = voice.getAudioFromMic()
+        text = "Text Text # " + str(i)
+        zoom.post_transcript(text)
 
 main()
+
+
+# Other possible methods from Voice class
+    # voice.findInputSource()
+    # voice.speak('Play Recording Now')
+    # voice.analyzeText(text)

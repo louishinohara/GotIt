@@ -16,9 +16,9 @@ class Voice:
             print(str(i) + ': ' + str(devices[i]))
 
     def speak(self, text):        # Translates text to speach using google's library
-        tts = gTTS(text= text, lang= "en")  # Converts text to speech
-        filename = "voice.mp3"              # Creates a new mp3 file
-        tts.save(filename)                  # Saves text to mp3 file as sound
+        # tts = gTTS(text= text, lang= "en")  # Converts text to speech
+        filename = "redactSoundBeep.mp3"              # Creates a new mp3 file
+        # tts.save(filename)                  # Saves text to mp3 file as sound
         playsound.playsound(filename)       # Plays sound
 
     def getAudioFromMic(self):   # Gets audio from mic and translates to text

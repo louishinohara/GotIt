@@ -6,7 +6,7 @@ import pyaudio
 import sys
 import re
 import io
-
+from VoiceClass import Voice
 # Put the json in the project so that anyone could access/use it without setting up env variables
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcloud.json"
 # Try this if you get an error
@@ -146,6 +146,7 @@ class MicrophoneStream(object):
         the next result to overwrite it, until the response is a final one. For the
         final one, print a newline to preserve the finalized transcription.
         """
+        voice = Voice()
         num_chars_printed = 0
         for response in responses:
             if not response.results:
@@ -168,10 +169,19 @@ class MicrophoneStream(object):
             # some extra spaces to overwrite the previous result
             overwrite_chars = " " * (num_chars_printed - len(transcript))
 
+            socialCaps = "Social Security"
+            socialLow = "social security"
+
+
             if not result.is_final:
+                if socialCaps in transcript or socialLow in transcript:
+                    parsedTranscript = transcript.split(" ")
+                    lastDig = parsedTranscript[-1]
+                    if lastDig.isdigit():
+                        voice.speak('beep')
+
                 sys.stdout.write(transcript + overwrite_chars + "\r")
                 sys.stdout.flush()
-
                 num_chars_printed = len(transcript)
 
             else:

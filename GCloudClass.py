@@ -176,12 +176,23 @@ class MicrophoneStream(object):
 
             else:
                 print(transcript + overwrite_chars)
-                text = 'Louis Shinohara: ' + transcript
-                self.zoom.post_transcript(text)
+                redactedText = self.analyzeText(transcript)
+                redactedTextWithName = 'Louis Shinohara: ' + redactedText
+                self.zoom.post_transcript(redactedTextWithName)
+
                 # Exit recognition if any of the transcribed phrases could be
                 # one of our keywords.
-                if re.search(r"\b(exit|quit)\b", transcript, re.I):
-                    print("Exiting..")
-                    break
+                # if re.search(r"\b(exit|quit)\b", transcript, re.I):
+                #     print("Exiting..")
+                #     break
 
                 num_chars_printed = 0
+
+    def analyzeText(self, transcription):
+        social = "social security"
+        creditCard = "credit card"
+
+        if social in transcription or creditCard in transcription:
+            return re.sub('\d','*', transcription)
+        else:
+            return transcription

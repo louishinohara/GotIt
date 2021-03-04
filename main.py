@@ -21,7 +21,7 @@ def testGCloud():
     RATE = 16000
     CHUNK = int(RATE / 10)  # 100ms
     language_code = "en-US"
-    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=93846635912&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=PHmXZI3cvRMjRM9Oktx0nxTiisVcWKUnQGOL65a6FCo.AG.VUwdPapAw5cr9oHxJtkUobK0nHbbIx8oPvvZBZYq8F-9l0_xUSfBTF9Ad-GyPFFNOvyHbZCyNWKhWlSl8UPbbqnDUJOLvgRadGt-cXEi__luwfX3CS0HHHlw.0On0MGAO1tEbKLb2yYxQMQ.X0qHZwgQS6eobq38'
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=97865757941&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=wGBGEM6j5Jjdh-vayG0pQMj-xhyjDda1QmQnxY7lTSo.AG.AXO-GJ3P6gUYcTTbmUEOaXNrHn9DRZrSEByJCwFla_PGS12Q_7yOaMs2p7blhxPozU8_Xu1Q-uP8SObcxgXafZ1A_CkLFspv9YAhMOkJ5eTqQtOMXK8l1ZWZ.oiXORulWJgA-HXvI4eIcgA.0stQtp7LgA8JINVu'
     
     zoom = Zoom(ZOOM_API_TOKEN)
     g = GCloud(RATE, CHUNK, language_code)

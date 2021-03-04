@@ -9,8 +9,9 @@
   - check which version works for you by entering `python` in your command line and seeing what comes up, for me it's "[MSC v.1927 64 bit (AMD64)]"
   - We're on Python 3.9, so it should be "PyAudio‑0.2.11‑cp39‑cp39‑win_amd64.whl" or "PyAudio‑0.2.11‑cp39‑cp39‑win32.whl".
 - Install PyAudio: `pip install PyAudio‑0.2.11‑cp39‑cp39‑win[YOUR VERSION HERE]`
+- Set GCloud JSON: `$env:GOOGLE_APPLICATION_CREDENTIALS="C:[FOLDER PATH]\streaming-audio--1613752195051-3855ad282581.json"`
+- Install Google Cloud SDK from <https://cloud.google.com/sdk/docs/install>
 - Install requirements: `pip install -r requirements.txt`
-- Set GCloud JSON: `$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\17326\Downloads\Sakai\Capstone\_Code\GCloud Streaming\Streaming Audio Transcription-998ceb6a0cb1.json"` (Your path will probably look different, copy/paste it)
 
 ## Maintenance
 

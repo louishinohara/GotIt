@@ -6,7 +6,7 @@ from GCloudClass import GCloud
 def main():
     voice = Voice()
     voice.speak('beep')
-    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=99632027021&ns=VVNISU8gU0hJTk9IQVJBJ3MgWm9vbSBNZWV0aW5n&expire=86400&sparams=id%2Cns%2Cexpire&signature=YsUUv5r7YtmRRfzaNW_-B3P6TwQY6YFSbFct4C_ob1U.AG.HeFxpw9WeqLeDPMP_GczhAeiRT5iQJSs2V4DZVRDdI8w-eyiNmCLFtBYEKAnCPiveRsC6wycvwDVYTaVPOzBnzTySiaUudbOu4E_07_UsKk2OIa_Z3h1aFWM.294f0xnkWIFDqEqHLVzJow.MkZe635jQzX_jJrh'
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=N7VY_l70shwwdsunIQAVuzg1yB8pdWT5XN6c9hxoY6U.AG.NwznwpdVzs3cKNJNI3v1696l7qZlhw0nSqGYSpZENFA6PODVspBiWvbHhh-NwsC1EnuYjX_6QyPukAcnZJsb_GdB_FHQqlwW31X6L3VA7VxWFwBwvMZYAQ.n0pYxcys94Lf6hvYexkAgQ.GrTmW8tnf4DFODVv'
     
     zoom = Zoom(ZOOM_API_TOKEN)
 
@@ -21,7 +21,7 @@ def testGCloud():
     RATE = 16000
     CHUNK = int(RATE / 10)  # 100ms
     language_code = "en-US"
-    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=0i90cFay87X4W6GSdPOb8ZLW36QQN06JxYWGqXyQAS4.AG.G5kvqfmNZeC9GNSLD5zCEw2vg7mFBBbzyHMTt-1fV6l4hYsRHUe-a7gXL5juRp37hDV_VP48Xbaha21l-6rGSUZ1RdEWLVxBZDRLhG0_M8Nh5hYY6JIZGQ.1gQL1SMN2XtfyoYNIjRzQQ.mRDkJtWgZpGLjsDU'
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=N7VY_l70shwwdsunIQAVuzg1yB8pdWT5XN6c9hxoY6U.AG.NwznwpdVzs3cKNJNI3v1696l7qZlhw0nSqGYSpZENFA6PODVspBiWvbHhh-NwsC1EnuYjX_6QyPukAcnZJsb_GdB_FHQqlwW31X6L3VA7VxWFwBwvMZYAQ.n0pYxcys94Lf6hvYexkAgQ.GrTmW8tnf4DFODVv'
     
     zoom = Zoom(ZOOM_API_TOKEN)
     g = GCloud(RATE, CHUNK, language_code)

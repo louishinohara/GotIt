@@ -7,6 +7,7 @@ import sys
 import re
 import io
 from VoiceClass import Voice
+from sqlquery import databaseQuery
 # Put the json in the project so that anyone could access/use it without setting up env variables
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcloud.json"
 # Try this if you get an error
@@ -26,6 +27,8 @@ class GCloud:
         )
         self.rate = RATE
         self.chunk = CHUNK
+        
+            
 
 
     def testLocalAudio(self):
@@ -72,6 +75,11 @@ class MicrophoneStream(object):
         # Create a thread-safe buffer of audio data
         self._buff = queue.Queue()
         self.closed = True
+
+        self.coursenames = []
+        self.courseids = []
+        self.coursenames, self.courseids = databaseQuery.getCatalog(self,self.coursenames,self.courseids)
+        self.coursenames = [name.lower() for name in self.coursenames]
 
     def __enter__(self):
         self._audio_interface = pyaudio.PyAudio()
@@ -185,9 +193,10 @@ class MicrophoneStream(object):
                 num_chars_printed = len(transcript)
 
             else:
-                print(transcript + overwrite_chars)
+                #print(transcript + overwrite_chars)
                 redactedText = self.analyzeText(transcript)
                 redactedTextWithName = 'Louis Shinohara: ' + redactedText
+                print(redactedText + overwrite_chars)
                 self.zoom.post_transcript(redactedTextWithName)
 
                 # Exit recognition if any of the transcribed phrases could be
@@ -201,8 +210,18 @@ class MicrophoneStream(object):
     def analyzeText(self, transcription):
         social = "social security"
         creditCard = "credit card"
+        
+        
+        
 
         transcription = transcription.lower()
+        for name in self.coursenames:
+            name = name.lower()
+            if name in transcription:
+                print(self.courseids[self.coursenames.index(name)])
+                return re.sub(name, str(self.courseids[self.coursenames.index(name)]), transcription)
+
+
         if social in transcription or creditCard in transcription:
             return re.sub('\d','*', transcription)
         else:

@@ -202,7 +202,7 @@ class MicrophoneStream(object):
         social = "social security"
         creditCard = "credit card"
 
-        transcription.lower()
+        transcription = transcription.lower()
         if social in transcription or creditCard in transcription:
             return re.sub('\d','*', transcription)
         else:

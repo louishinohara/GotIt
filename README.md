@@ -15,3 +15,4 @@
 ## Maintenance
 
 - If you add any new imports, make sure to freeze: `pip freeze > requirements.txt`
+- Test update

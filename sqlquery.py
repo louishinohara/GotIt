@@ -6,7 +6,8 @@ class databaseQuery:
 
     # for driver in pyodbc.drivers():
     #     print(driver)
-    server ='DESKTOP-MG8TJIG'
+    # server ='DESKTOP-MG8TJIG'
+    server = 'DESKTOP-E8VFGUU'
     database ='stock_database'
     username = 'root'
     password = 'Louis_Josh_SQL'
@@ -25,9 +26,7 @@ class databaseQuery:
 
     cursor = conn.cursor()
 
-    class_name = 'Calculus I for the Mathematical and Physical Sciences'
-
-
+    # class_name = 'Calculus I for the Mathematical and Physical Sciences'
     #cursor.execute('INSERT INTO sample VALUES (1,2)')
     #cursor.execute('SELECT courseid FROM math_courses WHERE course_name=\'' + class_name + '\';')
     #cursor.execute('SELECT courseid FROM math_courses WHERE course_name=\'Calculus I for the Mathematical and Physical Sciences\';')

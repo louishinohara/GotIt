@@ -197,9 +197,10 @@ class MicrophoneStream(object):
             else:
                 #print(transcript + overwrite_chars)
                 redactedText = self.analyzeText(transcript)
-                redactedTextWithName = 'Louis Shinohara: ' + redactedText
-                print(redactedText + overwrite_chars)
-                self.zoom.post_transcript(redactedTextWithName)
+                # redactedTextWithName = 'Got It: ' + redactedText
+                # print(redactedText + overwrite_chars)
+                if redactedText:
+                    self.zoom.post_transcript(redactedText)
 
                 # Exit recognition if any of the transcribed phrases could be
                 # one of our keywords.
@@ -210,21 +211,20 @@ class MicrophoneStream(object):
                 num_chars_printed = 0
 
     def analyzeText(self, transcription):
-        social = "social security"
-        creditCard = "credit card"
-        
-        
-        
+        # social = "social security"
+        # creditCard = "credit card"
 
         transcription = transcription.lower()
         for name in self.coursenames:
             name = name.lower()
             if name in transcription:
-                print(self.courseids[self.coursenames.index(name)])
-                return re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
+                # print(self.courseids[self.coursenames.index(name)])
+                # re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
+                transcription = name.upper() + ': ' + str(self.links[self.coursenames.index(name)])
+                return transcription
 
 
-        if social in transcription or creditCard in transcription:
-            return re.sub('\d','*', transcription)
-        else:
-            return transcription
+        # if social in transcription or creditCard in transcription:
+        #     return re.sub('\d','*', transcription)
+        # else:
+        

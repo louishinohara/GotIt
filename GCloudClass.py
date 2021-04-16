@@ -221,6 +221,9 @@ class MicrophoneStream(object):
             name = name.lower()
             if name in transcription:
                 print(self.courseids[self.coursenames.index(name)])
+                f = open("courses_list.txt", "a")
+                f.write(str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]) + '\n')
+                f.close()
                 return re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
 
 

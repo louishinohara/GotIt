@@ -2,7 +2,7 @@ import pyodbc
 import mysql.connector
 
 class databaseQuery:
-  def getCatalog(self,names,ids):
+  def getCatalog(self,names,ids, links):
 
     # for driver in pyodbc.drivers():
     #     print(driver)
@@ -35,17 +35,20 @@ class databaseQuery:
 
     coursenames = []
     courseids = []
+    courselinks = []
     for row in cursor:
-        coursename,courseid = row
+        coursename,courseid,link = row
         coursenames.append(coursename)
         courseids.append(courseid)
+        courselinks.append(link)
         # print(coursename)
         # print(courseid)
 
 
     names = coursenames
     ids = courseids
+    links = courselinks
     conn.commit()
     cursor.close()
     conn.close()
-    return names,ids
+    return names,ids,links

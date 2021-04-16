@@ -78,8 +78,10 @@ class MicrophoneStream(object):
 
         self.coursenames = []
         self.courseids = []
-        self.coursenames, self.courseids = databaseQuery.getCatalog(self,self.coursenames,self.courseids)
+        self.links = []
+        self.coursenames, self.courseids, self.links = databaseQuery.getCatalog(self,self.coursenames,self.courseids, self.links)
         self.coursenames = [name.lower() for name in self.coursenames]
+        
 
     def __enter__(self):
         self._audio_interface = pyaudio.PyAudio()
@@ -219,7 +221,7 @@ class MicrophoneStream(object):
             name = name.lower()
             if name in transcription:
                 print(self.courseids[self.coursenames.index(name)])
-                return re.sub(name, str(self.courseids[self.coursenames.index(name)]), transcription)
+                return re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
 
 
         if social in transcription or creditCard in transcription:

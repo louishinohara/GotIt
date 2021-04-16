@@ -51,3 +51,46 @@ class databaseQuery:
     cursor.close()
     conn.close()
     return names,ids,links
+
+  def getAPITokens(self, token):
+    server = 'DESKTOP-E8VFGUU'
+    database ='stock_database'
+    username = 'root'
+    password = 'Louis_Josh_SQL'
+
+    try:
+        conn = mysql.connector.connect(user='root', password = 'Louis_Josh_SQL', host='127.0.0.1', database='stock_database')
+
+    except mysql.connector.Error as err:
+      if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+        print("Something is wrong with your user name or password")
+      elif err.errno == errorcode.ER_BAD_DB_ERROR:
+        print("Database does not exist")
+      else:
+        print(err)
+
+
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM api_tokens')
+
+    api_tokens = []
+    for row in cursor:
+      api_token = row
+    
+      if token in api_token:
+        print("YES")
+        f = open('seqnumber.txt', 'r')
+        seq_number_lines = f.readlines()
+        seq_number = int(seq_number_lines[0])
+        return seq_number
+
+   
+    print("NO")
+    cursor.execute('INSERT INTO api_tokens VALUES (\'' + token + '\');')
+    conn.commit()
+    cursor.close()
+    conn.close()
+  
+    return 0
+    

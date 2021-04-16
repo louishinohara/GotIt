@@ -4,8 +4,8 @@ import requests
 # https://github.com/heyyeh12/zoom_cc#development
 
 class Zoom:
-    def __init__(self, apiToken):
-        self.seq_num = 340                                           # Acts like a key when sending HTTPS Posts
+    def __init__(self, apiToken, seq_num):
+        self.seq_num = seq_num                                          # Acts like a key when sending HTTPS Posts
         self.api_token = apiToken
         self.session = requests.Session()                               # Keeps open session
         self.params = {'seq' : str(0), 'lang' : "en-US" }               # For POST
@@ -25,4 +25,7 @@ class Zoom:
         self.session.post(self.api_token, params=self.params, data=transcript, headers=self.headers)    # Post transcript
         self.increase_seq_num()     # Increment Seq Num
         print("[seq #] " + str(self.seq_num))
+        f = open('seqnumber.txt', 'w')
+        f.write(str(self.seq_num))
+        f.close()
         time.sleep(1.5)             # Sleep so the API is not overloaded with requests

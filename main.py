@@ -1,14 +1,17 @@
 from ZoomClass import Zoom
 from VoiceClass import Voice
 from GCloudClass import GCloud
+from sqlquery import databaseQuery
 
 
 def main():
     # voice = Voice()
     # voice.speak('beep')
-    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=JCw7i8gtSxqGeklgU19ETm6wliDGdgudwkvhWI0Eq_k.AG.rnsAw6fY3xKd0lRsNZtIFsGRd_myZnHnFeM_3X9Kc9R35WbW_EsnZin16PcZ0ni0ki--fxkdymRQylxCR9wkKjtQykxWasgY2_dZAO3vGw7zpBZIAuFGnA.YEoanSsVo_2KaWnhK5JmQw.Zgz0mW8lZ6ZvyXMG'
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=Q2juRWo0cFpVbX9NfEVbet0wOfZtgEvl5-JxlpoZOEA.AG.Nej1zhAaLZGHL0lcf6x-FTfZQyci4GuDexY9R-eMAhy15RK3CHuGQ9Y1d-9ZAVR82Y2-yhZdhjkI7OrYxjxml2TbRZEzZ6LthCnGEHdcfpR6T-5W2u6rNw.ddXkFWA69V1hIac2t8qTyg.5Md7B7fkmlD6bWTh'
     
-    zoom = Zoom(ZOOM_API_TOKEN)
+    seq_token = databaseQuery.getAPITokens(databaseQuery, ZOOM_API_TOKEN)
+
+    zoom = Zoom(ZOOM_API_TOKEN, seq_token)
 
     for i in range(5):
         # text = voice.getAudioFromMic()
@@ -21,9 +24,10 @@ def testGCloud():
     RATE = 16000
     CHUNK = int(RATE / 10)  # 100ms
     language_code = "en-US"
-    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=JCw7i8gtSxqGeklgU19ETm6wliDGdgudwkvhWI0Eq_k.AG.rnsAw6fY3xKd0lRsNZtIFsGRd_myZnHnFeM_3X9Kc9R35WbW_EsnZin16PcZ0ni0ki--fxkdymRQylxCR9wkKjtQykxWasgY2_dZAO3vGw7zpBZIAuFGnA.YEoanSsVo_2KaWnhK5JmQw.Zgz0mW8lZ6ZvyXMG'
-    
-    zoom = Zoom(ZOOM_API_TOKEN)
+    ZOOM_API_TOKEN = 'https://wmcc.zoom.us/closedcaption?id=2172132419&ns=Sm9zaHVhIEh5bW93aXR6J3MgUGVyc29uYWwgTWVl&expire=86400&sparams=id%2Cns%2Cexpire&signature=Q2juRWo0cFpVbX9NfEVbet0wOfZtgEvl5-JxlpoZOEA.AG.Nej1zhAaLZGHL0lcf6x-FTfZQyci4GuDexY9R-eMAhy15RK3CHuGQ9Y1d-9ZAVR82Y2-yhZdhjkI7OrYxjxml2TbRZEzZ6LthCnGEHdcfpR6T-5W2u6rNw.ddXkFWA69V1hIac2t8qTyg.5Md7B7fkmlD6bWTh'
+    seq_token = databaseQuery.getAPITokens(databaseQuery, ZOOM_API_TOKEN)
+
+    zoom = Zoom(ZOOM_API_TOKEN, seq_token)
     g = GCloud(RATE, CHUNK, language_code)
     # g.testLocalAudio()
 

@@ -218,18 +218,18 @@ class MicrophoneStream(object):
         for name in self.coursenames:
             name = name.lower()
             if name in transcription:
-<<<<<<< HEAD
+                
                 print(self.courseids[self.coursenames.index(name)])
                 f = open("courses_list.txt", "a")
                 f.write(str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]) + '\n')
                 f.close()
-                return re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
-=======
+                #return re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
+
                 # print(self.courseids[self.coursenames.index(name)])
                 # re.sub(name, str(self.courseids[self.coursenames.index(name)]) + ', ' + str(self.links[self.coursenames.index(name)]), transcription)
                 transcription = name.upper() + ': ' + str(self.links[self.coursenames.index(name)])
                 return transcription
->>>>>>> 57fe1300b90c0393a10734e024ccf62d3b3558b1
+
 
 
         # if social in transcription or creditCard in transcription:
